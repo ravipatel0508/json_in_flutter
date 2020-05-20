@@ -54,6 +54,7 @@ class HomePageState extends State<HomePage>{
                                 fontSize: 20.0
                               ),
                             ),
+
                             Text("Name:"+myData[index]['name']),
                             Text("Age:"+myData[index]['age']),
                             Text("Gender:"+myData[index]['gender']),
