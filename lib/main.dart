@@ -36,24 +36,36 @@ class HomePageState extends State<HomePage>{
           child: FutureBuilder(
             future: DefaultAssetBundle.of(context).loadString('load_json/person.json'),
             builder: (context, snapshot) {
-              var mydata = json.decode(snapshot.data.toString());
+              var myData = json.decode(snapshot.data.toString());
 
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index){
                   return Card(
+                    elevation: 7.0,
+                    margin: EdgeInsets.all(20.0),
+                    shadowColor: Colors.grey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        Text("ID:"+mydata[index]['id']),
-                        Text("Name:"+mydata[index]['name']),
-                        Text("Age:"+mydata[index]['age']),
-                        Text("Gender:"+mydata[index]['gender']),
+                        Row(
+                          children: <Widget>[
+                            Text("ID:"+myData[index]['id'],
+                              style: TextStyle(
+                                fontSize: 20.0
+                              ),
+                            ),
+                            Text("Name:"+myData[index]['name']),
+                            Text("Age:"+myData[index]['age']),
+                            Text("Gender:"+myData[index]['gender']),
+                          ],
+                        ),
                       ],
                     ),
                   );
                 },
-                itemCount: mydata == null ? 0 : mydata.length,
+                itemCount: myData == null ? 0 : myData.length,
               );
+
             },
           ),
         ),
